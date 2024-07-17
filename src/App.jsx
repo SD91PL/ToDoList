@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import './App.css'
+import { useState, useRef } from 'react'
 import './icons.css'
+import Heading from './components/Heading'
+import Input from './components/Input'
+import Tasks from './components/Tasks'
 
 export default function App() {
 	return (
-		<div className='h-screen w-screen bg-[#172627]'>
-			{/* H1 */}
-			<div className='container p-4'>
-				<h1 className='mt-8 px-4 text-3xl font-bold text-left text-white border-l-2 border-[#20cd8d] leading-normal'>
-					ToDoList
-				</h1>
-			</div>
+		<main className='h-screen w-screen bg-[#172627]'>
+			{/* Heading ✔ */}
+			<Heading>ToDoList</Heading>
 
 			{/* INPUT */}
-			<div className='container p-4'>
-				<div className='relative h-12'>
-					<input
-						type='text'
-						className='w-full px-8 h-full bg-[#20cd8d] text-[#172627] rounded-full outline-none'
-					/>
-					<button className='absolute bottom-0 right-0 bg-[#2a8463] px-10 h-full text-white text-lg rounded-full outline-none'>
-						Add +
-					</button>
-				</div>
-			</div>
+			<Input/>
 
 			{/* TASKS */}
+			<Tasks/>
+
+
+
+
+			{/* STYLES OF TASKS */}
 			<section className='container p-4 mt-6'>
 
-        
         <p className='text-white m-4'>Styles of tasks</p>
+        
         {/* TASK */}
 				<div className='flex justify-between mb-6 w-full h-12 bg-[#59746a] rounded-full outline-none'>
 					<div className='flex-col content-center h-full px-8'>
@@ -71,6 +65,6 @@ export default function App() {
 				</div>
 
 			</section>
-		</div>
+		</main>
 	)
 }
