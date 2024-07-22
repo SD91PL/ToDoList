@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 
-export default function Task({ text }) {
+export default function Task({ text, handleDelete, taskId }) {
 	const [doneTask, setDoneTask] = useState(false)
 
 	let background = 'flex justify-between mb-6 w-full h-12 rounded-full outline-none'
@@ -26,7 +26,7 @@ export default function Task({ text }) {
 	}
 
 	return (
-		<div className={background}>
+		<li className={background}>
 			<div className='flex-col content-center h-full px-8'>
 				<p className={paragraphStyle}>{text}</p>
 			</div>
@@ -40,11 +40,11 @@ export default function Task({ text }) {
 					<button className='p-2'>
 						<i className='icon-edit'></i>
 					</button>
-					<button className='p-2'>
+					<button onClick={() => handleDelete(taskId)} className='p-2'>
 						<i className='icon-delete'></i>
 					</button>
 				</p>
 			</div>
-		</div>
+		</li>
 	)
 }

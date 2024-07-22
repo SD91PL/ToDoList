@@ -11,12 +11,18 @@ export default function App() {
 	const addTask = newTask => {
 		setTasks([...tasks, newTask])
 	}
+	const deleteTask = (taskId) => {
+		setTasks([...tasks.filter((_, index) =>  index !== taskId)])
+	}
+	// const deleteTask = taskId => {
+	// 	setTasks(prevTasks => prevTasks.filter((element, index) => index !== taskId))
+	// }
 
 	let maxLength
 
 	if (window.innerWidth <= 1400) {
 		maxLength = Math.floor((window.innerWidth - 150) / 12)
-	} else if ( window.innerWidth > 1400) {
+	} else if (window.innerWidth > 1400) {
 		maxLength = 135
 	}
 	return (
@@ -31,7 +37,10 @@ export default function App() {
 			/>
 
 			{/* TASKS */}
-			<Tasks tasks={tasks} />
+			<Tasks
+				tasks={tasks}
+				onDelete={deleteTask}
+			/>
 
 			{/* STYLES OF TASKS ✔ */}
 			<StylesOfTasks />
