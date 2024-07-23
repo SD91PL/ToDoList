@@ -34,6 +34,13 @@ export default function App() {
 				maxLength={maxLength}
 			/>
 
+			{/* INFO ✔ */}
+			{tasks.length === 0 ? (
+				<p className='container mt-6 text-center text-[#2d4b4d]'>
+					Write a task and press <strong>Enter</strong> or click <strong>Add</strong>
+				</p>
+			) : undefined}
+
 			{/* TASKS */}
 			<Tasks
 				tasks={tasks}
