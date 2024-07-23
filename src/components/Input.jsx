@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import plusImg from '../assets/img/plus.svg'
 
 export default function Input({ onAdd, maxLength }) {
 	const [enteredTask, setEnteredTask] = useState('')
@@ -34,8 +35,13 @@ export default function Input({ onAdd, maxLength }) {
 				/>
 				<button
 					onClick={handleClick}
-					className='absolute bottom-0 right-0 bg-[#2a8463] px-10 h-full text-white text-lg rounded-full outline-none'>
-					Add +
+					className='absolute bottom-0 right-0 bg-[#2a8463] px-10 pe-6 h-full text-white text-lg rounded-full outline-none'>
+					Add
+					<img
+						className='inline max-h-6 size-7 ms-1 pb-1'
+						src={plusImg}
+						alt=''
+					/>
 				</button>
 			</div>
 		</div>
