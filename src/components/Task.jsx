@@ -9,7 +9,7 @@ export default function Task({ text, handleDelete, taskId }) {
 	
 	if (doneTask) {
 		background += ' bg-[#666769]'
-		paragraphStyle = 'text-[#20cd8d] italic line-through'
+		paragraphStyle = 'text-[#8b8c8f] italic line-through'
 		checkBtnStyle += ' text-[#20cd8d]'
 	} else {
 		background += ' bg-[#59746a]'
