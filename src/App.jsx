@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './icons.css'
 import Heading from './components/Heading'
 import Input from './components/Input'
+import Info from './components/Info'
 import Tasks from './components/Tasks'
 import StylesOfTasks from './components/StylesOfTasks'
 
@@ -35,11 +36,7 @@ export default function App() {
 			/>
 
 			{/* INFO ✔ */}
-			{tasks.length === 0 ? (
-				<p className='container mt-6 text-center text-[#2d4b4d]'>
-					Write a task and press <strong>Enter</strong> or click <strong>Add</strong>
-				</p>
-			) : undefined}
+			{tasks.length === 0 ? <Info /> : undefined}
 
 			{/* TASKS */}
 			<Tasks
