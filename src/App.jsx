@@ -9,11 +9,15 @@ export default function App() {
 	const [tasks, setTasks] = useState([])
 
 	const addTask = newTask => {
-		setTasks([...tasks, newTask])
+		setTasks([...tasks, { txt: newTask, id: Math.random() }])
 	}
-	const deleteTask = (taskId) => {
-		setTasks([...tasks.filter((_, index) =>  index !== taskId)])
+	const deleteTask = taskId => {
+		setTasks([...tasks.filter(task => task.id !== taskId)])
 	}
+
+	// const deleteTask = (taskId) => {
+	// 	setTasks([...tasks.filter((_, index) =>  index !== taskId)])
+	// }
 	// const deleteTask = taskId => {
 	// 	setTasks(prevTasks => prevTasks.filter((element, index) => index !== taskId))
 	// }

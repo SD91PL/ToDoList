@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 
-export default function Task({ text, handleDelete, taskId }) {
+export default function Task({ text, handleDelete}) {
 	const [doneTask, setDoneTask] = useState(false)
 
 	let background = 'flex justify-between mb-6 w-full h-12 rounded-full outline-none'
@@ -40,7 +40,7 @@ export default function Task({ text, handleDelete, taskId }) {
 					<button className='p-2'>
 						<i className='icon-edit'></i>
 					</button>
-					<button onClick={() => handleDelete(taskId)} className='p-2'>
+					<button onClick={handleDelete} className='p-2'>
 						<i className='icon-delete'></i>
 					</button>
 				</p>

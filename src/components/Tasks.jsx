@@ -5,12 +5,11 @@ export default function Tasks({ tasks, onDelete }) {
 	return (
 		<section className='container p-4 mt-6'>
 			<ul>
-				{tasks.map((task, taskId) => (
+				{tasks.map(task => (
 					<Task
-						key={taskId}
-						text={task}
-						taskId={taskId}
-						handleDelete={onDelete}
+						key={task.id}
+						text={task.txt}
+						handleDelete={() => onDelete(task.id)}
 					/>
 				))}
 			</ul>
