@@ -16,12 +16,19 @@ export default function Input({ onAdd, maxLength }) {
 		setEnteredTask('')
 	}
 
+	function handleKeyPress(event) {
+		if (event.key === 'Enter') {
+			handleClick()
+		}
+	}
+
 
 	return (
 		<div className='container p-4'>
 			<div className='relative h-12'>
 				<input
 					onChange={handleChange}
+					onKeyDown={handleKeyPress}
 					value={enteredTask}
 					maxLength={maxLength}
 					type='text'
