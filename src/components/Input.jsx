@@ -1,5 +1,4 @@
-import { useState, useRef } from 'react'
-import { forwardRef } from 'react'
+import { useState } from 'react'
 
 export default function Input({ onAdd, maxLength }) {
 	const [enteredTask, setEnteredTask] = useState('')
@@ -21,7 +20,6 @@ export default function Input({ onAdd, maxLength }) {
 			handleClick()
 		}
 	}
-
 
 	return (
 		<div className='container p-4'>

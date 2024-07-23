@@ -1,12 +1,12 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 
-export default function Task({ text, handleDelete}) {
+export default function Task({ text, handleDelete }) {
 	const [doneTask, setDoneTask] = useState(false)
 
 	let background = 'flex justify-between mb-6 w-full h-12 rounded-full outline-none'
 	let paragraphStyle
 	let checkBtnStyle = 'p-2'
-	
+
 	if (doneTask) {
 		background += ' bg-[#666769]'
 		paragraphStyle = 'text-[#8b8c8f] italic line-through'
@@ -40,7 +40,9 @@ export default function Task({ text, handleDelete}) {
 					<button className='p-2'>
 						<i className='icon-edit'></i>
 					</button>
-					<button onClick={handleDelete} className='p-2'>
+					<button
+						onClick={handleDelete}
+						className='p-2'>
 						<i className='icon-delete'></i>
 					</button>
 				</p>

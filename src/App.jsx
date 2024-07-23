@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import './icons.css'
 import Heading from './components/Heading'
 import Input from './components/Input'
@@ -15,13 +15,6 @@ export default function App() {
 		setTasks([...tasks.filter(task => task.id !== taskId)])
 	}
 
-	// const deleteTask = (taskId) => {
-	// 	setTasks([...tasks.filter((_, index) =>  index !== taskId)])
-	// }
-	// const deleteTask = taskId => {
-	// 	setTasks(prevTasks => prevTasks.filter((element, index) => index !== taskId))
-	// }
-
 	let maxLength
 
 	if (window.innerWidth <= 1400) {
@@ -29,12 +22,13 @@ export default function App() {
 	} else if (window.innerWidth > 1400) {
 		maxLength = 135
 	}
+
 	return (
 		<main className='min-h-screen min-w-screen bg-[#172627]'>
 			{/* Heading ✔ */}
 			<Heading>ToDoList</Heading>
 
-			{/* INPUT */}
+			{/* INPUT ✔ */}
 			<Input
 				onAdd={addTask}
 				maxLength={maxLength}

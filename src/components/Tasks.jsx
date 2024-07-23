@@ -1,4 +1,3 @@
-// import { useState, useRef } from 'react'
 import Task from './Task.jsx'
 
 export default function Tasks({ tasks, onDelete }) {
