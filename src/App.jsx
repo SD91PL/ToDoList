@@ -36,7 +36,7 @@ export default function App() {
 			/>
 
 			{/* INFO ✔ */}
-			{tasks.length === 0 ? <Info /> : undefined}
+			{tasks.length === 0 && <Info />}
 
 			{/* TASKS */}
 			<Tasks
