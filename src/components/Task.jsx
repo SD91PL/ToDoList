@@ -23,7 +23,7 @@ export default function Task({ text, handleDelete }) {
 	if (editTask) {
 		background += ' bg-[#8e99a2]'
 		paragraphStyle = 'text-[#8b8c8f]'
-		taskContainer += ' px-0 w-full ps-2'
+		taskContainer += ' pe-0 ps-2 w-full'
 		editBtnStyle += ' text-white'
 	} else {
 		background
