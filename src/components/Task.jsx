@@ -1,8 +1,9 @@
 import { useState } from 'react'
 
-export default function Task({ text, handleDelete }) {
+export default function Task({ text, handleDelete, maxLength, handleEdit }) {
 	const [doneTask, setDoneTask] = useState(false)
 	const [editTask, setEditTask] = useState(false)
+	const [editedTask, setEditedTask] = useState(text)
 
 	let background = 'flex justify-between mb-6 w-full h-12 rounded-full outline-none bg-[#59746a]'
 	let taskContainer = 'flex-col content-center h-full px-8'
@@ -46,15 +47,38 @@ export default function Task({ text, handleDelete }) {
 		}
 	}
 
+	// EDITING TASK FUNCTIONS
+
+	function handleChange(event) {
+		setEditedTask(event.target.value)
+	}
+
+	function handleClick() {
+		if (editedTask.trim() === '') {
+			return
+		}
+		setEditTask(false)
+		// handleEdit(editedTask.trim()) // export to Tasks.jsx and after to App.jsx
+	}
+
+	function handleKeyPress(event) {
+		if (event.key === 'Enter') {
+			handleClick()
+		}
+	}
+
 	return (
 		<li className={background}>
 			<div className={taskContainer}>
-				{editTask === false && <p className={paragraphStyle}>{text}</p>}
+				{editTask === false && <p className={paragraphStyle}>{editedTask}</p>}
 				{editTask && (
 					<input
+						onChange={handleChange}
+						onKeyDown={handleKeyPress}
+						value={editedTask}
+						maxLength={maxLength}
 						type='text'
 						className='bg-[#b0bdc1] rounded-full px-6 h-5/6 outline-none w-full text-[#666769]'
-						defaultValue={text}
 					/>
 				)}
 			</div>

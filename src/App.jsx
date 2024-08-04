@@ -15,6 +15,9 @@ export default function App() {
 	const deleteTask = taskId => {
 		setTasks([...tasks.filter(task => task.id !== taskId)])
 	}
+	// const editTask = (taskId, updatedText) => {
+	// 	setTasks(tasks.map(task => (task.id === taskId ? { ...task, txt: updatedText } : task)))
+	// }
 
 	let maxLength
 
@@ -42,6 +45,8 @@ export default function App() {
 			<Tasks
 				tasks={tasks}
 				onDelete={deleteTask}
+				// onEdit={editTask}
+				maxLength={maxLength}
 			/>
 
 			{/* STYLES OF TASKS ✔ */}
