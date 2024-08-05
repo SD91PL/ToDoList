@@ -46,7 +46,7 @@ export default function App() {
 			{/* INFO ✔ */}
 			{tasks.length === 0 && <Info />}
 
-			{/* TASKS */}
+			{/* TASKS ✔ */}
 			<Tasks
 				tasks={tasks}
 				onDelete={deleteTask}
