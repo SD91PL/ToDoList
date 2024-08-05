@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './icons.css'
 import Heading from './components/Heading'
 import Input from './components/Input'
@@ -7,7 +7,16 @@ import Tasks from './components/Tasks'
 import StylesOfTasks from './components/StylesOfTasks'
 
 export default function App() {
-	const [tasks, setTasks] = useState([])
+	const [tasks, setTasks] = useState(() => {
+		// Get state from localStorage or set empty array as default value
+		const savedTasks = localStorage.getItem('tasks')
+		return savedTasks ? JSON.parse(savedTasks) : []
+	})
+
+	useEffect(() => {
+		// Save state to localStorage every time tasks change
+		localStorage.setItem('tasks', JSON.stringify(tasks))
+	}, [tasks])
 
 	const addTask = newTask => {
 		setTasks([...tasks, { txt: newTask, id: crypto.randomUUID(), done: false }])
