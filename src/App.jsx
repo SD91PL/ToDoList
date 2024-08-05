@@ -10,7 +10,7 @@ export default function App() {
 	const [tasks, setTasks] = useState([])
 
 	const addTask = newTask => {
-		setTasks([...tasks, { txt: newTask, id: Math.random() }])
+		setTasks([...tasks, { txt: newTask, id: crypto.randomUUID() }])
 	}
 	const deleteTask = taskId => {
 		setTasks([...tasks.filter(task => task.id !== taskId)])
