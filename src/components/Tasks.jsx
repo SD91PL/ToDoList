@@ -9,7 +9,7 @@ export default function Tasks({ tasks, onDelete, onEdit, maxLength }) {
 						key={task.id}
 						text={task.txt}
 						handleDelete={() => onDelete(task.id)}
-						// handleEdit={() => onEdit(task.id)} // export to App.jsx
+						handleEdit={() => onEdit(task.id)} // export to App.jsx
 						maxLength = {maxLength}
 					/>
 				))}

@@ -58,7 +58,7 @@ export default function Task({ text, handleDelete, maxLength, handleEdit }) {
 			return
 		}
 		setEditTask(false)
-		// handleEdit(editedTask.trim()) // export to Tasks.jsx and after to App.jsx
+		handleEdit(editedTask.trim()) // export to Tasks.jsx and after to App.jsx
 	}
 
 	function handleKeyPress(event) {
