@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-export default function Task({ text, handleDelete, maxLength, handleEdit }) {
-	const [doneTask, setDoneTask] = useState(false)
+export default function Task({ id, text, done, maxLength, handleDelete, handleEdit, handleStatus }) {
+	const [doneTask, setDoneTask] = useState(done)
 	const [editTask, setEditTask] = useState(false)
 	const [editedTask, setEditedTask] = useState(text)
 
@@ -32,19 +32,12 @@ export default function Task({ text, handleDelete, maxLength, handleEdit }) {
 	}
 
 	function handleDoneTask() {
-		if (doneTask == false) {
-			setDoneTask(true)
-		} else {
-			setDoneTask(false)
-		}
+		setDoneTask(!doneTask)
+		handleStatus(id) // export to Tasks.jsx and after to App.jsx
 	}
 
 	function handleEditTask() {
-		if (editTask == false) {
-			setEditTask(true)
-		} else {
-			setEditTask(false)
-		}
+		setEditTask(!editTask)
 	}
 
 	// EDITING TASK FUNCTIONS
@@ -58,7 +51,7 @@ export default function Task({ text, handleDelete, maxLength, handleEdit }) {
 			return
 		}
 		setEditTask(false)
-		handleEdit(editedTask.trim()) // export to Tasks.jsx and after to App.jsx
+		handleEdit(id, editedTask.trim()) // export to Tasks.jsx and after to App.jsx
 	}
 
 	function handleKeyPress(event) {

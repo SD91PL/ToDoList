@@ -10,14 +10,19 @@ export default function App() {
 	const [tasks, setTasks] = useState([])
 
 	const addTask = newTask => {
-		setTasks([...tasks, { txt: newTask, id: crypto.randomUUID() }])
+		setTasks([...tasks, { txt: newTask, id: crypto.randomUUID(), done: false }])
 	}
 	const deleteTask = taskId => {
-		setTasks([...tasks.filter(task => task.id !== taskId)])
+		setTasks(tasks.filter(task => task.id !== taskId))
 	}
 	const editTask = (taskId, updatedText) => {
-		setTasks([...tasks.map(task => (task.id === taskId ? { ...task, txt: updatedText } : task))])
+		setTasks(tasks.map(task => (task.id === taskId ? { ...task, txt: updatedText } : task)))
 	}
+	const statusTask = taskId => {
+		setTasks(tasks.map(task => (task.id === taskId ? { ...task, done: !task.done } : task)))
+	}
+
+	console.log(tasks) // checking for updates to the tasks array
 
 	let maxLength
 
@@ -46,6 +51,7 @@ export default function App() {
 				tasks={tasks}
 				onDelete={deleteTask}
 				onEdit={editTask}
+				onStatus={statusTask}
 				maxLength={maxLength}
 			/>
 
