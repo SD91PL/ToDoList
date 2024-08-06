@@ -4,17 +4,14 @@ import Heading from './components/Heading'
 import Input from './components/Input'
 import Info from './components/Info'
 import Tasks from './components/Tasks'
-import StylesOfTasks from './components/StylesOfTasks'
 
 export default function App() {
 	const [tasks, setTasks] = useState(() => {
-		// Get state from localStorage or set empty array as default value
 		const savedTasks = localStorage.getItem('tasks')
 		return savedTasks ? JSON.parse(savedTasks) : []
 	})
 
 	useEffect(() => {
-		// Save state to localStorage every time tasks change
 		localStorage.setItem('tasks', JSON.stringify(tasks))
 	}, [tasks])
 
@@ -31,8 +28,6 @@ export default function App() {
 		setTasks(tasks.map(task => (task.id === taskId ? { ...task, done: !task.done } : task)))
 	}
 
-	console.log(tasks) // checking for updates to the tasks array
-
 	let maxLength
 
 	if (window.innerWidth <= 1400) {
@@ -43,19 +38,19 @@ export default function App() {
 
 	return (
 		<main className='min-h-screen min-w-screen bg-[#172627]'>
-			{/* Heading ✔ */}
+			{/* HEADING */}
 			<Heading>ToDoList</Heading>
 
-			{/* INPUT ✔ */}
+			{/* INPUT */}
 			<Input
 				onAdd={addTask}
 				maxLength={maxLength}
 			/>
 
-			{/* INFO ✔ */}
+			{/* INFO */}
 			{tasks.length === 0 && <Info />}
 
-			{/* TASKS ✔ */}
+			{/* TASKS */}
 			<Tasks
 				tasks={tasks}
 				onDelete={deleteTask}
@@ -63,9 +58,6 @@ export default function App() {
 				onStatus={statusTask}
 				maxLength={maxLength}
 			/>
-
-			{/* STYLES OF TASKS ✔ */}
-			<StylesOfTasks />
 		</main>
 	)
 }

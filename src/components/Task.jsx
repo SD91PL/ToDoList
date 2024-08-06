@@ -33,14 +33,12 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 
 	function handleDoneTask() {
 		setDoneTask(!doneTask)
-		handleStatus(id) // export to Tasks.jsx and after to App.jsx
+		handleStatus(id)
 	}
 
 	function handleEditTask() {
 		setEditTask(!editTask)
 	}
-
-	// EDITING TASK FUNCTIONS
 
 	function handleChange(event) {
 		setEditedTask(event.target.value)
@@ -51,7 +49,7 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 			return
 		}
 		setEditTask(false)
-		handleEdit(id, editedTask.trim()) // export to Tasks.jsx and after to App.jsx
+		handleEdit(id, editedTask.trim())
 	}
 
 	function handleKeyPress(event) {
