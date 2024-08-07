@@ -38,6 +38,7 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 
 	function handleEditTask() {
 		setEditTask(!editTask)
+		editTask && handleEdit(id, editedTask.trim())
 	}
 
 	function handleChange(event) {
