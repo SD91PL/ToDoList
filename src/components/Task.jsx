@@ -14,7 +14,7 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 	}
 
 	let background = 'flex justify-between mb-6 w-full h-12 rounded-full outline-none bg-[#59746a] touch-none'
-	let taskContainer = 'flex-col content-center h-full px-8 whitespace-nowrap overflow-hidden'
+	let taskContainer = 'flex-col content-center h-full w-full px-8 whitespace-nowrap overflow-hidden touch-none'
 	let paragraphStyle = 'text-white'
 	let checkBtnStyle = 'p-2'
 	let editBtnStyle = 'p-2'
@@ -72,9 +72,10 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 			className={background}
 			ref={setNodeRef}
 			{...attributes}
-			{...listeners}
 			style={style}>
-			<div className={taskContainer}>
+			<div
+				className={taskContainer}
+				{...listeners}>
 				{editTask === false && <p className={paragraphStyle}>{editedTask}</p>}
 				{editTask && (
 					<input
