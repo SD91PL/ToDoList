@@ -1,9 +1,17 @@
 import { useState } from 'react'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 
 export default function Task({ id, text, done, maxLength, handleDelete, handleEdit, handleStatus }) {
 	const [doneTask, setDoneTask] = useState(done)
 	const [editTask, setEditTask] = useState(false)
 	const [editedTask, setEditedTask] = useState(text)
+
+	const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id })
+	const style = {
+		transition,
+		transform: CSS.Transform.toString(transform),
+	}
 
 	let background = 'flex justify-between mb-6 w-full h-12 rounded-full outline-none bg-[#59746a]'
 	let taskContainer = 'flex-col content-center h-full px-8 whitespace-nowrap overflow-hidden'
@@ -60,7 +68,12 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 	}
 
 	return (
-		<li className={background}>
+		<li
+			className={background}
+			ref={setNodeRef}
+			{...attributes}
+			{...listeners}
+			style={style}>
 			<div className={taskContainer}>
 				{editTask === false && <p className={paragraphStyle}>{editedTask}</p>}
 				{editTask && (

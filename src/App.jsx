@@ -1,4 +1,15 @@
 import { useState, useEffect } from 'react'
+import {
+	closestCorners,
+	DndContext,
+	KeyboardSensor,
+	PointerSensor,
+	TouchSensor,
+	useSensor,
+	useSensors,
+} from '@dnd-kit/core'
+import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
+
 import './icons.css'
 import Heading from './components/Heading'
 import Input from './components/Input'
@@ -36,6 +47,33 @@ export default function App() {
 		maxLength = 135
 	}
 
+	// dnd-kit functions
+
+	const getTaskPos = id => tasks.findIndex(task => task.id === id)
+
+	const handleDragEnd = event => {
+		const { active, over } = event
+
+		if (active.id === over.id) return
+
+		setTasks(tasks => {
+			const originalPos = getTaskPos(active.id)
+			const newPos = getTaskPos(over.id)
+
+			return arrayMove(tasks, originalPos, newPos)
+		})
+	}
+
+	// keyboard moving - sensors
+
+	const sensors = useSensors(
+		useSensor(TouchSensor),
+		useSensor(PointerSensor),
+		useSensor(KeyboardSensor, {
+			coordinateGetter: sortableKeyboardCoordinates,
+		})
+	)
+
 	return (
 		<main className='min-h-screen min-w-screen bg-[#172627]'>
 			{/* HEADING */}
@@ -50,14 +88,19 @@ export default function App() {
 			{/* INFO */}
 			{tasks.length === 0 && <Info />}
 
-			{/* TASKS */}
-			<Tasks
-				tasks={tasks}
-				onDelete={deleteTask}
-				onEdit={editTask}
-				onStatus={statusTask}
-				maxLength={maxLength}
-			/>
+			{/* TASKS with dnd-kit */}
+			<DndContext
+				sensors={sensors}
+				onDragEnd={handleDragEnd}
+				collisionDetection={closestCorners}>
+				<Tasks
+					tasks={tasks}
+					onDelete={deleteTask}
+					onEdit={editTask}
+					onStatus={statusTask}
+					maxLength={maxLength}
+				/>
+			</DndContext>
 		</main>
 	)
 }
