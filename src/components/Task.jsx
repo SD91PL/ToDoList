@@ -13,7 +13,7 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 		transform: CSS.Transform.toString(transform),
 	}
 
-	let background = 'flex justify-between mb-6 w-full h-12 rounded-full outline-none bg-[#59746a]'
+	let background = 'flex justify-between mb-6 w-full h-12 rounded-full outline-none bg-[#59746a] touch-none'
 	let taskContainer = 'flex-col content-center h-full px-8 whitespace-nowrap overflow-hidden'
 	let paragraphStyle = 'text-white'
 	let checkBtnStyle = 'p-2'
