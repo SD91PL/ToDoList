@@ -75,8 +75,8 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 			style={style}>
 			<div
 				className={taskContainer}
-				{...listeners}>
-				{editTask === false && <p className={paragraphStyle}>{editedTask}</p>}
+				>
+				{editTask === false && <p className={paragraphStyle} {...listeners}>{editedTask}</p>}
 				{editTask && (
 					<input
 						onChange={handleChange}
