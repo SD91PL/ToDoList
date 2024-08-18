@@ -73,11 +73,19 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 			ref={setNodeRef}
 			{...attributes}
 			style={style}>
-			<div
-				className={taskContainer}
-				>
-				{editTask === false && <p className={paragraphStyle} {...listeners}>{editedTask}</p>}
-				{editTask && (
+			{editTask === false && (
+				<div
+					className={`${taskContainer} cursor-grab`}
+					{...listeners}>
+					<p
+						className={paragraphStyle}
+						{...listeners}>
+						{editedTask}
+					</p>
+				</div>
+			)}
+			{editTask && (
+				<div className={`${taskContainer} cursor-default`}>
 					<input
 						onChange={handleChange}
 						onKeyDown={handleKeyPress}
@@ -85,9 +93,10 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 						maxLength={maxLength}
 						type='text'
 						className='bg-[#b0bdc1] rounded-full px-6 h-5/6 outline-none w-full text-[#666769]'
-					/>
-				)}
-			</div>
+					/>{' '}
+				</div>
+			)}
+
 			<div className='flex-col flex-nowrap content-center h-full pe-4 ps-2'>
 				<p className='flex text-[#b0bdc1] gap-1'>
 					<button

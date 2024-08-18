@@ -9,7 +9,7 @@ import {
 	useSensors,
 } from '@dnd-kit/core'
 import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
-import { restrictToFirstScrollableAncestor } from '@dnd-kit/modifiers'
+import { restrictToVerticalAxis, restrictToParentElement } from '@dnd-kit/modifiers'
 
 import './icons.css'
 import Heading from './components/Heading'
@@ -93,7 +93,7 @@ export default function App() {
 			<DndContext
 				sensors={sensors}
 				onDragEnd={handleDragEnd}
-				modifiers={[restrictToFirstScrollableAncestor]}
+				modifiers={[restrictToVerticalAxis, restrictToParentElement]}
 				collisionDetection={closestCorners}>
 				<Tasks
 					tasks={tasks}
