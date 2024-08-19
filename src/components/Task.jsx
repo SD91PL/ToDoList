@@ -108,7 +108,7 @@ export default function Task({
 						value={editedTask}
 						maxLength={maxLength}
 						type='text'
-						className='bg-[#b0bdc1] rounded-full px-6 h-5/6 outline-none w-full text-[#666769]'
+						className='bg-[#b0bdc1] rounded-full px-6 h-5/6 outline-none w-full text-[#666769] transition-colors focus-visible:bg-[#d2e2e7]'
 					/>{' '}
 				</div>
 			)}
