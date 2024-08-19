@@ -4,7 +4,8 @@
 
 /* focus and outlines */
 
-/* task */
+/* transition */
+.onfocus-input,
 .onfocus-li,
 .onfocus-done-li,
 .task-btns {
@@ -12,6 +13,14 @@
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 300ms;
 }
+
+/* input */
+.onfocus-input:focus-visible ~ .input-btn {
+	background-color: #349471;
+	border-color: #25f3a7;
+}
+
+/* task */
 .onfocus-li:focus-visible,
 .onfocus-li:focus-visible ~ .task-btns {
 	background-color: #4b5f57;
