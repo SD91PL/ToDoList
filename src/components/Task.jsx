@@ -6,6 +6,7 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 	const [doneTask, setDoneTask] = useState(done)
 	const [editTask, setEditTask] = useState(false)
 	const [editedTask, setEditedTask] = useState(text)
+	const [isGrabbing, setIsGrabbing] = useState(false)
 
 	const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id })
 	const style = {
@@ -75,7 +76,9 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 			style={style}>
 			{editTask === false && (
 				<div
-					className={`${taskContainer} cursor-grab`}
+					className={`${taskContainer} ${isGrabbing ? 'cursor-grabbing' : 'cursor-grab'}`}
+					onMouseDown={() => setIsGrabbing(true)}
+					onMouseUp={() => setIsGrabbing(false)}
 					{...listeners}>
 					<p
 						className={paragraphStyle}
