@@ -79,7 +79,7 @@ export default function Task({
 
 	return (
 		<li
-			className={`${background} ${isGrabbing ? 'shadow-[0px_0px_10px_15px_rgba(0,0,0,0.1)]' : ''}`}
+			className={background}
 			ref={setNodeRef}
 			{...attributes}
 			style={style}>
