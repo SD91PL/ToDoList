@@ -35,7 +35,7 @@ export default function Input({ onAdd, maxLength }) {
 				/>
 				<button
 					onClick={handleClick}
-					className='absolute bottom-0 right-0 bg-[#2a8463] border-2 border-[#20cd8d] px-10 pe-6 h-full text-white text-lg rounded-full outline-none hover:bg-[#276e54] focus:bg-[#276e54] transition-colors'>
+					className='absolute bottom-0 right-0 bg-[#2a8463] border-2 border-[#20cd8d] px-10 pe-6 h-full text-white text-lg rounded-full hover:bg-[#276e54] transition-colors'>
 					Add
 					<img
 						className='inline max-h-6 size-7 ms-1 pb-1'

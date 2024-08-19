@@ -20,7 +20,7 @@ export default function Task({
 	const style = {
 		transition,
 		transform: CSS.Transform.toString(transform),
-		opacity: isDragging ? 0.2 : 1,
+		opacity: isDragging ? 0 : 1,
 	}
 
 	let background = 'flex justify-between mb-6 w-full h-12 rounded-full outline-none bg-[#59746a] touch-none'
@@ -79,7 +79,7 @@ export default function Task({
 
 	return (
 		<li
-			className={background}
+			className={`${background} ${isGrabbing ? 'shadow-[0px_0px_10px_15px_rgba(0,0,0,0.1)]' : ''}`}
 			ref={setNodeRef}
 			{...attributes}
 			style={style}>
