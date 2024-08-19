@@ -2,16 +2,25 @@ import { useState } from 'react'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 
-export default function Task({ id, text, done, maxLength, handleDelete, handleEdit, handleStatus }) {
+export default function Task({
+	id,
+	text,
+	done,
+	maxLength,
+	handleDelete,
+	handleEdit,
+	handleStatus,
+	isGrabbing = false,
+}) {
 	const [doneTask, setDoneTask] = useState(done)
 	const [editTask, setEditTask] = useState(false)
 	const [editedTask, setEditedTask] = useState(text)
-	const [isGrabbing, setIsGrabbing] = useState(false)
 
-	const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id })
+	const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id })
 	const style = {
 		transition,
 		transform: CSS.Transform.toString(transform),
+		opacity: isDragging ? 0.2 : 1,
 	}
 
 	let background = 'flex justify-between mb-6 w-full h-12 rounded-full outline-none bg-[#59746a] touch-none'
@@ -77,8 +86,6 @@ export default function Task({ id, text, done, maxLength, handleDelete, handleEd
 			{editTask === false && (
 				<div
 					className={`${taskContainer} ${isGrabbing ? 'cursor-grabbing' : 'cursor-grab'}`}
-					onMouseDown={() => setIsGrabbing(true)}
-					onMouseUp={() => setIsGrabbing(false)}
 					{...listeners}>
 					<p
 						className={paragraphStyle}

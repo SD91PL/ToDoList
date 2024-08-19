@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import {
 	closestCorners,
 	DndContext,
+	DragOverlay,
 	KeyboardSensor,
 	PointerSensor,
 	TouchSensor,
@@ -16,8 +17,11 @@ import Heading from './components/Heading'
 import Input from './components/Input'
 import Info from './components/Info'
 import Tasks from './components/Tasks'
+import Task from './components/Task'
 
 export default function App() {
+	const [activeId, setActiveId] = useState(null)
+
 	const [tasks, setTasks] = useState(() => {
 		const savedTasks = localStorage.getItem('tasks')
 		return savedTasks ? JSON.parse(savedTasks) : []
@@ -54,6 +58,7 @@ export default function App() {
 
 	const handleDragEnd = event => {
 		const { active, over } = event
+		setActiveId(null)
 
 		if (active.id === over.id) return
 
@@ -77,24 +82,20 @@ export default function App() {
 
 	return (
 		<main className='min-h-screen min-w-screen bg-[#172627]'>
-			{/* HEADING */}
 			<Heading>ToDoList</Heading>
-
-			{/* INPUT */}
 			<Input
 				onAdd={addTask}
 				maxLength={maxLength}
 			/>
-
-			{/* INFO */}
 			{tasks.length === 0 && <Info />}
-
-			{/* TASKS with dnd-kit */}
 			<DndContext
 				sensors={sensors}
+				onDragStart={event => setActiveId(event.active.id)}
 				onDragEnd={handleDragEnd}
+				onDragCancel={() => setActiveId(null)}
 				modifiers={[restrictToVerticalAxis, restrictToParentElement]}
-				collisionDetection={closestCorners}>
+				collisionDetection={closestCorners}
+			>
 				<Tasks
 					tasks={tasks}
 					onDelete={deleteTask}
@@ -102,6 +103,16 @@ export default function App() {
 					onStatus={statusTask}
 					maxLength={maxLength}
 				/>
+				<DragOverlay>
+					{activeId ? (
+						<Task
+							id={activeId}
+							text={tasks.find(task => task.id === activeId)?.txt || ''}
+							done={tasks.find(task => task.id === activeId)?.done || false}
+							isGrabbing={true}
+						/>
+					) : null}
+				</DragOverlay>
 			</DndContext>
 		</main>
 	)
