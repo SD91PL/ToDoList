@@ -86,7 +86,8 @@ export default function Task({
 			{editTask === false && (
 				<div
 					className={`${taskContainer} ${isGrabbing ? 'cursor-grabbing' : 'cursor-grab'}`}
-					{...listeners}>
+					{...listeners}
+					tabIndex={0}>
 					<p
 						className={paragraphStyle}
 						{...listeners}>
