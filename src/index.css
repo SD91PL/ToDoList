@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* focus and outlines */
+
+/* task */
+.onfocus-li,
+.onfocus-done-li,
+.task-btns {
+	transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 300ms;
+}
+.onfocus-li:focus-visible,
+.onfocus-li:focus-visible ~ .task-btns {
+	background-color: #4b5f57;
+}
+.onfocus-done-li:focus-visible,
+.onfocus-done-li:focus-visible ~ .task-btns {
+	background-color: #595a5c;
+}
