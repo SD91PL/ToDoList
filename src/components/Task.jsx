@@ -26,10 +26,11 @@ export default function Task({
 	let background =
 		'flex justify-between mb-6 w-full h-12 rounded-full outline-none bg-[#59746a] touch-none overflow-hidden drop-shadow-[0px_0px_3px_rgba(23,38,39,0.25)]'
 	let taskContainer = 'flex-col content-center h-full w-full px-8 whitespace-nowrap overflow-hidden touch-none'
-	let paragraphStyle = 'flex-col content-center h-full text-white'
-	let singleBtnStyle = 'p-2 outline-none focus-visible:text-white focus-visible:drop-shadow-md'
+	let paragraphStyle = 'h-6 text-white'
+	let singleBtnStyle =
+		'flex items-center justify-center h-12 w-8 outline-none focus-visible:text-white hover:drop-shadow-md focus-visible:drop-shadow-md'
 	let checkBtnStyle = `${singleBtnStyle}`
-	let editBtnStyle = `${singleBtnStyle}`
+	let editBtnStyle = `${singleBtnStyle} `
 	let deleteBtnStyle = `${singleBtnStyle}`
 
 	if (doneTask) {
@@ -113,17 +114,17 @@ export default function Task({
 				</div>
 			)}
 
-			<div className='task-btns flex-col flex-nowrap content-center h-full pe-4'>
-				<p className='flex text-[#b0bdc1] gap-1'>
+			<div className='task-btns flex-col flex-nowrap content-center h-12 ps-2 pe-4'>
+				<p className='flex items-center text-[#b0bdc1] gap-1 h-12'>
 					<button
 						onClick={handleDoneTask}
 						className={checkBtnStyle}>
-						<i className='icon-check'></i>
+						<i className='icon-check pb-[1px]'></i>
 					</button>
 					<button
 						onClick={handleEditTask}
 						className={editBtnStyle}>
-						<i className='icon-edit'></i>
+						<i className='icon-edit pb-[2px] ps-[4px]'></i>
 					</button>
 					<button
 						onClick={handleDelete}
