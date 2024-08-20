@@ -26,7 +26,7 @@ export default function Task({
 	let background =
 		'flex justify-between mb-6 w-full h-12 rounded-full outline-none bg-[#59746a] touch-none overflow-hidden drop-shadow-[0px_0px_3px_rgba(23,38,39,0.25)]'
 	let taskContainer = 'flex-col content-center h-full w-full px-8 whitespace-nowrap overflow-hidden touch-none'
-	let paragraphStyle = 'text-white'
+	let paragraphStyle = 'flex-col content-center h-full text-white'
 	let singleBtnStyle = 'p-2 outline-none focus-visible:text-white focus-visible:drop-shadow-md'
 	let checkBtnStyle = `${singleBtnStyle}`
 	let editBtnStyle = `${singleBtnStyle}`
@@ -113,7 +113,7 @@ export default function Task({
 				</div>
 			)}
 
-			<div className='task-btns flex-col flex-nowrap content-center h-full pe-4 ps-2'>
+			<div className='task-btns flex-col flex-nowrap content-center h-full pe-4'>
 				<p className='flex text-[#b0bdc1] gap-1'>
 					<button
 						onClick={handleDoneTask}
