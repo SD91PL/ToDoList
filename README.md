@@ -5,10 +5,9 @@ The project was created using the basic features of the React library and the Ta
 The “dnd-kit” toolkit was also used to create a more interactive drag-and-drop interface.
 
 ## Features:
-- adding tasks
+- adding, editing and deleting tasks
 - changing the status of tasks
-- editing tasks
-- deleting tasks
-- drag and drop tasks to change their order
+- dragging and dropping tasks to change their order
+- saving the state of tasks in the browser's localeStorage
 - keyboard navigation
 - interactive and intuitive UI
