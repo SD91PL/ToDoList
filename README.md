@@ -8,6 +8,6 @@ The “dnd-kit” toolkit was also used to create a more interactive drag-and-dr
 - adding, editing and deleting tasks
 - changing the status of tasks
 - dragging and dropping tasks to change their order
-- saving the state of tasks in the browser's localeStorage
+- saving the state of tasks in the browser's localStorage
 - keyboard navigation
 - interactive and intuitive UI
