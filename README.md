@@ -1,3 +1,6 @@
 # ToDoList
 
-The project is being created to practice the basic features of the React library and Tailwind CSS.
+Features in the dnd branch:
+- drag and drop tasks to change their order
+- keyboard navigation
+- changing styles when element is in focus
