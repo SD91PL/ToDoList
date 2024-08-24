@@ -12,4 +12,4 @@ The "babel" packages enabled backward compatibility for browsers that support th
 - saving the state of tasks in the browser's localStorage
 - keyboard navigation
 - interactive and intuitive UI
-- configured application backward compatibility with the ES2015 standard
+- backward compatibility with the ES2015 standard
