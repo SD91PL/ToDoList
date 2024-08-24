@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import babel from 'vite-plugin-babel'
 
 export default defineConfig({
+	base: '/ToDoList/',
 	plugins: [
 		react(
 			babel({
