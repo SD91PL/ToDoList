@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import plusImg from '../assets/img/plus.svg'
 
-export default function Input({ onAdd, maxLength }) {
+export default function Input({ onAdd, maxLength, onHighlight, resetHighlight }) {
 	const [enteredTask, setEnteredTask] = useState('')
 
 	function handleChange(event) {
@@ -9,9 +9,16 @@ export default function Input({ onAdd, maxLength }) {
 	}
 
 	function handleClick() {
+		onHighlight() // Highlight user manual in Info.jsx
+		// Reset highlight after 2 seconds
+		setTimeout(() => {
+			resetHighlight()
+		}, 1000)
+
 		if (enteredTask.trim() === '') {
 			return
 		}
+
 		onAdd(enteredTask.trim())
 		setEnteredTask('')
 	}
@@ -34,7 +41,7 @@ export default function Input({ onAdd, maxLength }) {
 					className='onfocus-input w-full px-8 h-full bg-[#20cd8d] text-[#172627] rounded-full outline-none transition-colors duration-300 focus-visible:bg-[#25f3a7]'
 				/>
 				<button
-					onClick={handleClick}	
+					onClick={handleClick}
 					className='input-btn absolute bottom-0 right-0 bg-[#2a8463] border-2 border-[#20cd8d] px-10 pe-6 h-full text-white text-lg rounded-full hover:bg-[#276e54] transition-colors duration-300 outline-none focus-visible:bg-[#276e54]'>
 					Add
 					<img
