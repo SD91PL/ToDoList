@@ -29,3 +29,67 @@
 .onfocus-done-li:focus-visible ~ .task-btns {
 	background-color: #595a5c;
 }
+
+/* Intro - animations */
+
+.banner .logo svg path {
+	fill: transparent;
+	stroke: #20cd8d;
+	stroke-width: 0.5;
+	stroke-dasharray: 340;
+	stroke-dashoffset: 340;
+	animation: logoAnimation 3.2s ease-in-out 1 forwards;
+}
+.banner .title svg path {
+	fill: transparent;
+	stroke: #fff;
+	stroke-width: 0.5;
+	stroke-dasharray: 180;
+	stroke-dashoffset: 180;
+	animation: textAnimation 2s ease-in-out 1 forwards;
+}
+.banner .subtitle svg path {
+	fill: transparent;
+	stroke: #fff;
+	stroke-width: 0.1;
+	stroke-dasharray: 60;
+	stroke-dashoffset: 60;
+	animation: textAnimationAlt 2.2s ease-in-out .6s 1 forwards;
+}
+
+@keyframes logoAnimation {
+	0% {
+		stroke-dashoffset: 340;
+	}
+	60% {
+		fill: transparent;
+	}
+	100% {
+		fill: #20cd8d;
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes textAnimation {
+	0% {
+		stroke-dashoffset: 180;
+	}
+	70% {
+		fill: transparent;
+	}
+	100% {
+		fill: #fff;
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes textAnimationAlt {
+	0% {
+		stroke-dashoffset: 60;
+	}
+	60% {
+		fill: transparent;
+	}
+	100% {
+		fill: #fff;
+		stroke-dashoffset: 0;
+	}
+}
