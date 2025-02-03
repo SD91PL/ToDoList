@@ -8,8 +8,11 @@ export default function Info({ highlight }) {
 	}
 
 	return (
-		<p className='container mt-6 text-center text-[#2d4b4d]'>
-			<span className={highlighted}>Write a task </span> and press <strong>Enter</strong> or click <strong>Add</strong>
-		</p>
+		<div className='container flex flex-col gap-2 mt-6 text-center text-[#2d4b4d]'>
+			<p className={highlighted}>Write your first task</p>
+			<p>
+				and press <strong>Enter</strong> or click <strong>Add</strong>
+			</p>
+		</div>
 	)
 }
