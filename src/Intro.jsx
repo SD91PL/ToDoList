@@ -29,9 +29,9 @@ export default function Intro({ onFinish }) {
 	return (
 		<div
 			className={`absolute top-0 h-screen w-screen bg-[#172627] z-50 flex flex-col justify-center items-center transition duration-1000 ${
-				isFading ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
+				isFading ? 'opacity-0' : 'opacity-100'
 			}`}>
-			<div className='banner'>
+			<div className={`banner transition duration-1000 ${isFading ? 'scale-90' : 'scale-100'}`}>
 				<div className='logo mb-12 flex flex-col justify-center items-center'>
 					<svg
 						width='94'
