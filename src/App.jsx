@@ -10,12 +10,16 @@ import {
 	useSensors,
 } from '@dnd-kit/core'
 import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
-import { restrictToVerticalAxis, restrictToParentElement } from '@dnd-kit/modifiers'
+import {
+	restrictToVerticalAxis,
+	restrictToParentElement,
+} from '@dnd-kit/modifiers'
 
 import './icons.css'
 import Heading from './components/Heading'
 import Input from './components/Input'
 import Info from './components/Info'
+import InfoDnd from './components/InfoDnd'
 import Tasks from './components/Tasks'
 import Task from './components/Task'
 
@@ -27,7 +31,7 @@ export default function App() {
 		const savedTasks = localStorage.getItem('tasks')
 		return savedTasks ? JSON.parse(savedTasks) : []
 	})
-	
+
 	useEffect(() => {
 		localStorage.setItem('tasks', JSON.stringify(tasks))
 	}, [tasks])
@@ -39,10 +43,18 @@ export default function App() {
 		setTasks(tasks.filter(task => task.id !== taskId))
 	}
 	const editTask = (taskId, updatedText) => {
-		setTasks(tasks.map(task => (task.id === taskId ? { ...task, txt: updatedText } : task)))
+		setTasks(
+			tasks.map(task =>
+				task.id === taskId ? { ...task, txt: updatedText } : task
+			)
+		)
 	}
 	const statusTask = taskId => {
-		setTasks(tasks.map(task => (task.id === taskId ? { ...task, done: !task.done } : task)))
+		setTasks(
+			tasks.map(task =>
+				task.id === taskId ? { ...task, done: !task.done } : task
+			)
+		)
 	}
 
 	// Validation of input data
@@ -127,6 +139,7 @@ export default function App() {
 					) : null}
 				</DragOverlay>
 			</DndContext>
+			{tasks.length === 2 && <InfoDnd />}
 		</main>
 	)
 }
