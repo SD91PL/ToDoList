@@ -16,7 +16,14 @@ export default function Task({
 	const [editTask, setEditTask] = useState(false)
 	const [editedTask, setEditedTask] = useState(text)
 
-	const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id })
+	const {
+		attributes,
+		listeners,
+		setNodeRef,
+		transform,
+		transition,
+		isDragging,
+	} = useSortable({ id })
 	const style = {
 		transition,
 		transform: CSS.Transform.toString(transform),
@@ -25,7 +32,8 @@ export default function Task({
 
 	let background =
 		'flex justify-between mb-6 w-full h-12 rounded-full outline-none bg-[#59746a] touch-none overflow-hidden drop-shadow-[0px_0px_3px_rgba(23,38,39,0.25)]'
-	let taskContainer = 'flex-col content-center h-12 w-full px-8 whitespace-nowrap overflow-hidden touch-none'
+	let taskContainer =
+		'flex-col content-center h-12 w-full px-8 whitespace-nowrap overflow-hidden touch-none'
 	let paragraphStyle = 'h-6 text-white'
 	let singleBtnStyle =
 		'flex items-center justify-center h-12 w-8 outline-none focus-visible:text-white hover:drop-shadow-md focus-visible:drop-shadow-md'
@@ -89,9 +97,9 @@ export default function Task({
 			style={style}>
 			{editTask === false && (
 				<div
-					className={`${taskContainer} ${isGrabbing ? 'cursor-grabbing' : 'cursor-grab'} outline-none ${
-						doneTask ? 'onfocus-done-li' : 'onfocus-li'
-					}`}
+					className={`${taskContainer} ${
+						isGrabbing ? 'cursor-grabbing' : 'cursor-grab'
+					} outline-none ${doneTask ? 'onfocus-done-li' : 'onfocus-li'}`}
 					{...listeners}
 					tabIndex={0}>
 					<p
@@ -114,7 +122,7 @@ export default function Task({
 				</div>
 			)}
 
-			<div className='task-btns flex-col flex-nowrap content-center h-12 ps-2 pe-4'>
+			<div className='task-btns flex-col flex-nowrap content-center h-12 ps-2 pe-3 sm:pe-4'>
 				<p className='flex items-center h-12 text-[#b0bdc1] gap-1'>
 					<button
 						onClick={handleDoneTask}

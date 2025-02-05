@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import plusImg from '../assets/img/plus.svg'
 
-export default function Input({ onAdd, maxLength, onHighlight, resetHighlight }) {
+export default function Input({
+	onAdd,
+	maxLength,
+	onHighlight,
+	resetHighlight,
+}) {
 	const [enteredTask, setEnteredTask] = useState('')
 
 	function handleChange(event) {
@@ -42,10 +47,10 @@ export default function Input({ onAdd, maxLength, onHighlight, resetHighlight })
 				/>
 				<button
 					onClick={handleClick}
-					className='input-btn absolute bottom-0 right-0 bg-[#2a8463] border-2 border-[#20cd8d] px-10 pe-6 h-full text-white text-lg rounded-full hover:bg-[#276e54] transition-colors duration-300 outline-none focus-visible:bg-[#276e54]'>
-					Add
+					className='input-btn absolute bottom-0 right-0 px-3 sm:px-10 sm:pe-6 h-full bg-[#2a8463] border-2 border-[#20cd8d] text-white text-lg rounded-full hover:bg-[#276e54] transition-colors duration-300 outline-none focus-visible:bg-[#276e54]'>
+					<span className='hidden sm:inline mr-1'>Add</span>
 					<img
-						className='inline max-h-6 size-7 ms-1 pb-1'
+						className='inline max-h-6 size-7 pb-1'
 						src={plusImg}
 						alt=''
 					/>
